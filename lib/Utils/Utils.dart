@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:parking_slot_seller/Resources/strings.dart';
+import 'package:parking_slot/Resources/strings.dart';
 
 const BOTTOM_NAVIGATION_ITEMS = [
   BottomNavigationBarItem(

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:parking_slot_seller/Resources/colors.dart';
+import 'package:parking_slot/Resources/colors.dart';
 
 class AppManager {
   static void showToast({@required message, backgroundColor, textColor}) {

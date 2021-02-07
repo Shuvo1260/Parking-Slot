@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:parking_slot_seller/Data/Models/UserData.dart';
-import 'package:parking_slot_seller/Data/Sources/Remote/UserDataManager.dart';
-import 'package:parking_slot_seller/Resources/strings.dart';
+import 'package:parking_slot/Data/Models/UserData.dart';
+import 'package:parking_slot/Data/Sources/Remote/UserDataManager.dart';
+import 'package:parking_slot/Resources/strings.dart';
 
 class AuthManager {
   FirebaseFirestore _firestore;
