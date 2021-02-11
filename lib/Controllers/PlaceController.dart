@@ -6,6 +6,7 @@ import 'package:parking_slot/Resources/strings.dart';
 
 class PlaceController extends GetxController {
   var placeList = List<PlaceData>().obs;
+  var _allPlaceList = List<PlaceData>();
   FirebaseAuth _firebaseAuth;
   @override
   void onInit() {
@@ -15,11 +16,8 @@ class PlaceController extends GetxController {
   }
 
   void _fetchPlaceList() async {
-    var owner = _firebaseAuth.currentUser.email;
-
     FirebaseFirestore.instance
         .collection(PATH_PLACE_DATA)
-        .where('owner', isEqualTo: owner)
         .snapshots(includeMetadataChanges: true)
         .listen((querySnapshot) {
       placeList.clear();
@@ -27,8 +25,17 @@ class PlaceController extends GetxController {
         print(element.data());
         PlaceData placeData = PlaceData();
         placeData.fromJSON(element.data());
-        placeList.add(placeData);
+        _allPlaceList.add(placeData);
       });
+    });
+  }
+
+  void getList(place) async {
+    placeList.clear();
+    _allPlaceList.forEach((element) {
+      if (element.address.toString().contains(place)) {
+        placeList.add(element);
+      }
     });
   }
 }
