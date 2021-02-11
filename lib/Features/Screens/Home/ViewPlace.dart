@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parking_slot/Data/Models/PlacesData.dart';
 import 'package:parking_slot/Features/Widgets/ViewPlaceWidgets.dart';
+import 'package:parking_slot/Features/Widgets/widgets_login_registration.dart';
 import 'package:parking_slot/Resources/assets.dart';
 import 'package:parking_slot/Resources/colors.dart';
 import 'package:parking_slot/Resources/strings.dart';
@@ -19,6 +20,10 @@ class _ViewPlaceState extends State<ViewPlace> {
     super.initState();
     this._placeData = Get.arguments;
     print(_placeData.address);
+  }
+
+  void _bookParkingSlot() {
+    //
   }
 
   @override
@@ -46,6 +51,17 @@ class _ViewPlaceState extends State<ViewPlace> {
               ),
               ViewPlaceDetails(placeData: _placeData),
               ViewPlaceSlotWidget(placeData: _placeData),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                  vertical: 20.0,
+                ),
+                child: SubmitButton(
+                    onPressed: () {
+                      _bookParkingSlot();
+                    },
+                    text: "Book a slot"),
+              ),
             ],
           ),
         ),
