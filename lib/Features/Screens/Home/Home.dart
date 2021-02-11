@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parking_slot/Controllers/PlaceController.dart';
-import 'package:parking_slot/Features/Screens/Home/AddPlace.dart';
 import 'package:parking_slot/Features/Screens/Home/ViewPlace.dart';
 import 'package:parking_slot/Features/Widgets/HomeWidgets.dart';
-import 'package:parking_slot/Resources/colors.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -36,15 +34,6 @@ class _HomePageState extends State<HomePage> {
                 itemCount: controller.placeList.length,
               );
             },
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Get.to(
-                AddPlace(),
-              );
-            },
-            child: Icon(Icons.add),
-            backgroundColor: COLOR_CARIBBEAN_GREEN,
           ),
         ),
       ),
