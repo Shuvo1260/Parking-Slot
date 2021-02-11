@@ -6,7 +6,7 @@ class UserData {
   var id;
   var name;
   var phoneNumber;
-  var address;
+  var license;
   var email;
   var password;
   var imageUrl;
@@ -15,7 +15,7 @@ class UserData {
       {@required this.id,
       @required this.name,
       @required this.phoneNumber,
-      @required this.address,
+      @required this.license,
       @required this.email,
       @required this.password,
       @required this.imageUrl});
@@ -24,7 +24,7 @@ class UserData {
         'id': id,
         'name': name,
         'phoneNumber': phoneNumber,
-        'address': address,
+        'license': license,
         'email': email,
         'password': password,
         'imageUrl': imageUrl
@@ -34,7 +34,7 @@ class UserData {
     id = data['id'];
     name = data['name'];
     phoneNumber = data['phoneNumber'];
-    address = data['address'];
+    license = data['license'];
     email = data['email'];
     password = data['password'];
     imageUrl = data['imageUrl'];

@@ -17,6 +17,7 @@ const HINT_REGISTRATION = "Sign up";
 const HINT_NAME = "Name";
 const HINT_PHONE = "Phone";
 const HINT_ADDRESS = "Address";
+const HINT_LICENSE = "License";
 const HINT_RATE = "Rate";
 
 // Buttons
