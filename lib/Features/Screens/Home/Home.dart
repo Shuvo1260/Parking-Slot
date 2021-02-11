@@ -15,12 +15,6 @@ class _HomePageState extends State<HomePage> {
   var _searchValue;
 
   @override
-  void initState() {
-    super.initState();
-    placeListController.getList("a");
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
