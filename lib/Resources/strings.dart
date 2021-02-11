@@ -26,18 +26,10 @@ const BUTTON_ADD_PLACE = "add place";
 
 const BOTTOM_NAVIGATION_ITEM_1 = "Home";
 const BOTTOM_NAVIGATION_ITEM_2 = "Parked";
-const BOTTOM_NAVIGATION_ITEM_3 = "Pending";
-const BOTTOM_NAVIGATION_ITEM_4 = "History";
-const BOTTOM_NAVIGATION_ITEM_5 = "Profile";
+const BOTTOM_NAVIGATION_ITEM_3 = "Profile";
 
 // AppBar titles
-const APPBAR_TITLES = [
-  "Home",
-  "Parked cars",
-  "Pending parking",
-  "Parking history",
-  "Profile"
-];
+const APPBAR_TITLES = ["Home", "Parked cars", "Profile"];
 
 const APPBAR_PLACE = "Place";
 const APPBAR_ADD_PLACE = "Place details";

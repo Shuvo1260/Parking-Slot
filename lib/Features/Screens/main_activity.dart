@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parking_slot/Features/Screens/History/History.dart';
 import 'package:parking_slot/Features/Screens/Parked/Parked.dart';
-import 'package:parking_slot/Features/Screens/Pending/Pending.dart';
 import 'package:parking_slot/Features/Screens/Profile/Profile.dart';
 import 'package:parking_slot/Resources/assets.dart';
 import 'package:parking_slot/Resources/colors.dart';
@@ -19,13 +17,7 @@ class MainActivity extends StatefulWidget {
 class _MainActivityState extends State<MainActivity> {
   var _navIndex = 0;
   var _appBarTitle = APPBAR_TITLES[0];
-  var _BOTTOM_NAVIGATION_PAGES = [
-    HomePage(),
-    ParkedPage(),
-    PendingPage(),
-    HistoryPage(),
-    Profile()
-  ];
+  var _BOTTOM_NAVIGATION_PAGES = [HomePage(), ParkedPage(), Profile()];
 
   void onNavigationTap(int index) {
     setState(() {
