@@ -30,12 +30,15 @@ class PlaceController extends GetxController {
     });
   }
 
-  void getList(place) async {
+  void getList(String place) async {
     placeList.clear();
-    _allPlaceList.forEach((element) {
-      if (element.address.toString().contains(place)) {
-        placeList.add(element);
-      }
-    });
+    if (place.isNotEmpty && place != null) {
+      _allPlaceList.forEach((element) {
+        print("Place: ${element}");
+        if (element.address.toString().contains(place)) {
+          placeList.add(element);
+        }
+      });
+    }
   }
 }
