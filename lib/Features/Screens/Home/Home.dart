@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var placeListController = Get.put(PlaceController());
+  var _searchValue;
 
   @override
   void initState() {
@@ -27,13 +28,15 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: SearchField(
-                onTextChange: () {
-                  //
-                },
-              ),
+            SearchField(
+              onTextChange: (value) {
+                setState(() {
+                  _searchValue = value;
+                });
+              },
+              onSearchClick: () {
+                placeListController.getList(_searchValue);
+              },
             ),
             Expanded(
               child: GetX<PlaceController>(

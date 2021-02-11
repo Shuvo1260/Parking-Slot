@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:parking_slot/Data/Models/PlacesData.dart';
 import 'package:parking_slot/Resources/assets.dart';
@@ -119,12 +120,14 @@ class _PlaceListText extends StatelessWidget {
 
 class SearchField extends StatelessWidget {
   Function onTextChange;
+  Function onSearchClick;
 
-  SearchField({this.onTextChange});
+  SearchField({this.onTextChange, this.onSearchClick});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
@@ -139,17 +142,18 @@ class SearchField extends StatelessWidget {
           )
         ],
       ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: PADDING_HORIZONTAL_LOGIN_FIELDS,
-          vertical: PADDING_VERTICAL_LOGIN_FIELDS,
-        ),
-        child: Row(
-          children: [
-            Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: PADDING_HORIZONTAL_LOGIN_FIELDS,
+                vertical: PADDING_VERTICAL_LOGIN_FIELDS,
+              ),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: "Search",
+                  hintText: "Location",
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   errorBorder: InputBorder.none,
@@ -169,12 +173,18 @@ class SearchField extends StatelessWidget {
                 ),
               ),
             ),
-            Icon(
-              Icons.search,
-              color: COLOR_CARIBBEAN_GREEN,
+          ),
+          Container(
+            child: FlatButton(
+              padding: EdgeInsets.all(0.0),
+              child: Icon(
+                Icons.search,
+                color: COLOR_CARIBBEAN_GREEN,
+              ),
+              onPressed: onSearchClick,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
