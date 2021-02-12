@@ -19,6 +19,7 @@ class ParkingListController extends GetxController {
     FirebaseFirestore.instance
         .collection(PATH_PARKING_DATA)
         .where('carOwner', isEqualTo: _firebaseAuth.currentUser.email.trim())
+        .orderBy('id', descending: true)
         .snapshots(includeMetadataChanges: true)
         .listen((event) {
       event.docs.forEach((element) {
