@@ -31,6 +31,15 @@ const BOTTOM_NAVIGATION_ITEM_3 = "Profile";
 // AppBar titles
 const APPBAR_TITLES = ["Home", "Parked cars", "Profile"];
 
+// Status
+const PARKING_STATUS = [
+  "Pending",
+  "Parking allowed",
+  "Parked",
+  "Picked",
+  "Cancelled"
+];
+
 const APPBAR_PLACE = "Place";
 const APPBAR_ADD_PLACE = "Place details";
 
