@@ -55,14 +55,21 @@ class _ListItemFields extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _ParkingListText(
-              parkingData.address,
-              fontSize: FONT_SIZE_LIST_ITEM_ADDRESS,
+              "Token: #${parkingData.id}",
+              fontSize: FONT_SIZE_LIST_ITEM_RATE,
             ),
             SizedBox(
               height: 10.0,
             ),
             _ParkingListText(
-              PARKING_STATUS[parkingData.status],
+              "Address: ${parkingData.address}",
+              fontSize: FONT_SIZE_LIST_ITEM_RATE,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            _ParkingListText(
+              "Status: " + PARKING_STATUS[parkingData.status],
               fontSize: FONT_SIZE_LIST_ITEM_RATE,
             ),
           ],
