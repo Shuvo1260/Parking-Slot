@@ -45,6 +45,7 @@ const SIGN_OUT = "Sign out";
 
 // Database paths
 const PATH_USER_DATA = "Users";
+const PATH_PARKING_DATA = "Parking";
 const PATH_PLACE_DATA = "Places";
 const PATH_PLACE_IMAGE = "Places/";
 

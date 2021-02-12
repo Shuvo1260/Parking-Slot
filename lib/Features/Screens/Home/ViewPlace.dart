@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parking_slot/Controllers/ParkingController.dart';
+import 'package:parking_slot/Controllers/UserController.dart';
 import 'package:parking_slot/Data/Models/PlacesData.dart';
 import 'package:parking_slot/Features/Widgets/ViewPlaceWidgets.dart';
 import 'package:parking_slot/Features/Widgets/widgets_login_registration.dart';
@@ -15,6 +17,8 @@ class ViewPlace extends StatefulWidget {
 
 class _ViewPlaceState extends State<ViewPlace> {
   PlaceData _placeData;
+  final _parkingController = Get.put(ParkingController());
+  final _userController = Get.put(UserController());
   @override
   void initState() {
     super.initState();
@@ -22,8 +26,11 @@ class _ViewPlaceState extends State<ViewPlace> {
     print(_placeData.address);
   }
 
-  void _bookParkingSlot() {
-    //
+  void _bookParkingSlot() async {
+    if (await _parkingController.bookSlot(
+        _placeData, _userController.userData.value)) {
+      //
+    }
   }
 
   @override
