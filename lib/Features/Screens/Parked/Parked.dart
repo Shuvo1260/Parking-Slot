@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 import 'package:parking_slot/Controllers/ParkingListController.dart';
+import 'package:parking_slot/Features/Screens/ViewBooking.dart';
 import 'package:parking_slot/Features/Widgets/ParkingWidgets.dart';
 
 class ParkedPage extends StatefulWidget {
@@ -25,8 +26,8 @@ class _ParkedPageState extends State<ParkedPage> {
                   child: ParkingPlaceListItem(controller.parkingList[index]),
                   onPressed: () {
                     print(index);
-                    // Get.to(ViewPlace(),
-                    //     arguments: controller.parkingList[index]);
+                    Get.to(ViewBooking(),
+                        arguments: controller.parkingList[index]);
                   },
                 );
               },
