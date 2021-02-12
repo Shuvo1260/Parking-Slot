@@ -50,4 +50,21 @@ class ParkingData {
         'endTimeInMilli': endTimeInMilli,
         'status': status
       };
+
+  void fromJSON(Map data) {
+    id = data['id'];
+    address = data['address'];
+    imageUrl = data['imageUrl'];
+    rate = data['rate'];
+    parkOwner = data['parkOwner'];
+    carOwner = data['carOwner'];
+    carLicense = data['carLicense'];
+    carOwnerNumber = data['carOwnerNumber'];
+    parkOwnerNumber = data['parkOwnerNumber'];
+    startTime = data['startTime'];
+    endTime = data['endTime'];
+    startTimeInMilli = data['startTimeInMilli'];
+    endTimeInMilli = data['endTimeInMilli'];
+    status = data['status'];
+  }
 }
