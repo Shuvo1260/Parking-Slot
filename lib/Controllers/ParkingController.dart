@@ -14,20 +14,20 @@ class ParkingController extends GetxController {
     _firebaseAuth = FirebaseAuth.instance;
   }
 
-  Future<bool> bookSlot(PlaceData placeData, UserData userData) async {
+  Future<bool> bookSlot(id, PlaceData placeData, UserData userData) async {
     try {
-      var day = DateTime.now().day;
-      var month = DateTime.now().month;
-      var year = DateTime.now().year;
-      var hour = DateTime.now().hour;
-      var minutes = DateTime.now().minute;
-      var startTime = "Date: $day/$month/$year, Time: $hour:$minutes";
-      var endTime = "--:--";
-      var startTimeInMilli = DateTime.now().microsecondsSinceEpoch;
+      // var day = DateTime.now().day;
+      // var month = DateTime.now().month;
+      // var year = DateTime.now().year;
+      // var hour = DateTime.now().hour;
+      // var minutes = DateTime.now().minute;
+      var startTime = "Date: --/--/--, Time: --:--";
+      var endTime = "Date: --/--/--, Time: --:--";
+      var startTimeInMilli = 0;
       var endTimeInMilli = 0;
 
       ParkingData parkingData = ParkingData(
-          id: startTimeInMilli,
+          id: id,
           imageUrl: placeData.imageUrl,
           address: placeData.address,
           rate: placeData.rate,
@@ -44,7 +44,7 @@ class ParkingController extends GetxController {
 
       await FirebaseFirestore.instance
           .collection(PATH_PARKING_DATA)
-          .doc(parkingData.id)
+          .doc(parkingData.id.toString())
           .set(parkingData.toJSON());
 
       return true;
