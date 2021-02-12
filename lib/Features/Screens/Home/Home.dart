@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
                 });
               },
               onSearchClick: () {
+                print("PlaceList $_searchValue");
                 placeListController.getList(_searchValue);
               },
             ),

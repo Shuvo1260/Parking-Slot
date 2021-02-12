@@ -35,7 +35,10 @@ class PlaceController extends GetxController {
     if (place.isNotEmpty && place != null) {
       _allPlaceList.forEach((element) {
         print("Place: ${element.address}");
-        if (element.address.toString().contains(place)) {
+        if (element.address
+            .toString()
+            .toLowerCase()
+            .contains(place.toLowerCase())) {
           placeList.add(element);
         }
       });
