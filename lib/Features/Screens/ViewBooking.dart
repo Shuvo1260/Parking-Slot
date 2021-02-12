@@ -5,6 +5,9 @@ import 'package:parking_slot/Resources/assets.dart';
 import 'package:parking_slot/Resources/colors.dart';
 import 'package:parking_slot/Resources/strings.dart';
 import 'package:parking_slot/Resources/values.dart';
+import 'package:parking_slot/Utils/AppManager.dart';
+import 'package:parking_slot/Utils/BookingManager.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class ViewBooking extends StatefulWidget {
   @override
@@ -127,7 +130,25 @@ class _Option extends StatelessWidget {
             text: "Cancel",
             colorFirst: Colors.red,
             colorSecond: Colors.redAccent,
-            onPressed: () {},
+            onPressed: () async {
+              var progressDialog = ProgressDialog(
+                context,
+                type: ProgressDialogType.Normal,
+                isDismissible: false,
+              );
+              progressDialog.style(message: "Cancelling parking book...");
+              progressDialog.show();
+              if (await BookingManager.cancelBooking(
+                  _parkingData.id.toString())) {
+                AppManager.showToast(message: "Booking Cancelled");
+                progressDialog.hide();
+                Get.back();
+              } else {
+                AppManager.showToast(
+                    message: "Operation failed", backgroundColor: Colors.red);
+                progressDialog.hide();
+              }
+            },
           ),
         ],
       );
