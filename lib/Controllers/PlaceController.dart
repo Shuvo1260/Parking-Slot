@@ -12,10 +12,9 @@ class PlaceController extends GetxController {
   void onInit() {
     super.onInit();
     _firebaseAuth = FirebaseAuth.instance;
-    _fetchPlaceList();
   }
 
-  void _fetchPlaceList() async {
+  void fetchPlaceList() async {
     FirebaseFirestore.instance
         .collection(PATH_PLACE_DATA)
         .snapshots(includeMetadataChanges: true)
@@ -30,7 +29,7 @@ class PlaceController extends GetxController {
     });
   }
 
-  void getList(String place) async {
+  Future<List<PlaceData>> getList(String place) async {
     placeList.clear();
     if (place.isNotEmpty && place != null) {
       _allPlaceList.forEach((element) {
@@ -42,6 +41,7 @@ class PlaceController extends GetxController {
           placeList.add(element);
         }
       });
+      return placeList;
     }
   }
 }

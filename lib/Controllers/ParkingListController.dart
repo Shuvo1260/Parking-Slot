@@ -6,28 +6,40 @@ import 'package:parking_slot/Resources/strings.dart';
 
 class ParkingListController extends GetxController {
   FirebaseAuth _firebaseAuth;
-  var parkingList = List<ParkingData>().obs;
+  var parkingList = List<ParkingData>();
 
   @override
   void onInit() {
     super.onInit();
     _firebaseAuth = FirebaseAuth.instance;
-    fetchList();
+    // fetchList();
   }
 
-  void fetchList() async {
-    FirebaseFirestore.instance
+  Future<List<ParkingData>> fetchList() async {
+    var values = await FirebaseFirestore.instance
         .collection(PATH_PARKING_DATA)
         .where('carOwner', isEqualTo: _firebaseAuth.currentUser.email.trim())
         .orderBy('id', descending: true)
-        .snapshots(includeMetadataChanges: true)
-        .listen((event) {
-      event.docs.forEach((element) {
-        print("Parking: ${element.data()}");
-        var parking = ParkingData();
-        parking.fromJSON(element.data());
-        parkingList.add(parking);
-      });
+        .get();
+    //     .snapshots(includeMetadataChanges: true)
+    //     .listen((event) {
+    //   event.docs.forEach((element) {
+    //     print("Parking: ${element.data()}");
+    //     var parking = ParkingData();
+    //     parking.fromJSON(element.data());
+    //     parkingList.add(parking);
+    //   });
+    // });
+
+    parkingList.clear();
+
+    values.docs.forEach((element) {
+      var parkingData = ParkingData();
+      parkingData.fromJSON(element.data());
+      print("Parking data: " + parkingData.carLicense);
+      parkingList.add(parkingData);
     });
+
+    return parkingList;
   }
 }

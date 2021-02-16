@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parking_slot/Controllers/PlaceController.dart';
+import 'package:parking_slot/Data/Models/PlacesData.dart';
 import 'package:parking_slot/Features/Widgets/HomeWidgets.dart';
 
 import 'ViewPlace.dart';
@@ -11,8 +12,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var placeListController = Get.put(PlaceController());
+  var placeListController = PlaceController();
   var _searchValue;
+
+  List<PlaceData> _placeList = List<PlaceData>();
+
+  @override
+  void initState() {
+    super.initState();
+    placeListController.fetchPlaceList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +37,27 @@ class _HomePageState extends State<HomePage> {
                   _searchValue = value;
                 });
               },
-              onSearchClick: () {
+              onSearchClick: () async {
                 print("PlaceList $_searchValue");
-                placeListController.getList(_searchValue);
+                var values = await placeListController.getList(_searchValue);
+                setState(() {
+                  _placeList = values;
+                });
               },
             ),
             Expanded(
-              child: GetX<PlaceController>(
-                builder: (controller) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return FlatButton(
-                        padding: EdgeInsets.all(0.0),
-                        child: ViewPlaceListItem(controller.placeList[index]),
-                        onPressed: () {
-                          print(index);
-                          Get.to(ViewPlace(),
-                              arguments: controller.placeList[index]);
-                        },
-                      );
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return FlatButton(
+                    padding: EdgeInsets.all(0.0),
+                    child: ViewPlaceListItem(_placeList[index]),
+                    onPressed: () {
+                      print(index);
+                      Get.to(ViewPlace(), arguments: _placeList[index]);
                     },
-                    itemCount: controller.placeList.length,
                   );
                 },
+                itemCount: _placeList.length,
               ),
             ),
           ],

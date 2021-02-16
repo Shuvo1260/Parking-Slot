@@ -104,17 +104,16 @@ class _ProfileImage extends StatelessWidget {
   }
 }
 
-class UserDetailsWidget extends StatelessWidget {
-  const UserDetailsWidget({
-    Key key,
-    @required UserData userData,
-  })  : _userData = userData,
-        super(key: key);
+class UserDetailsWidget extends StatelessWidget with WidgetsBindingObserver {
+  UserDetailsWidget(
+    this._userData,
+  );
 
-  final UserData _userData;
+  UserData _userData;
 
   @override
   Widget build(BuildContext context) {
+    print(_userData.phoneNumber);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -140,7 +139,9 @@ class UserDetailsWidget extends StatelessWidget {
           SizedBox(
             height: 10.0,
           ),
-          DetailsTextWidget(data: _userData.license, icon: Icons.car_rental),
+          DetailsTextWidget(
+              data: _userData.license == null ? "" : _userData.license,
+              icon: Icons.car_rental),
           SizedBox(
             height: 10.0,
           ),

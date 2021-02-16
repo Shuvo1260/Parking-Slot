@@ -4,6 +4,7 @@ import 'package:parking_slot/Resources/assets.dart';
 import 'package:parking_slot/Resources/colors.dart';
 import 'package:parking_slot/Resources/strings.dart';
 import 'package:parking_slot/Resources/values.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewPlaceImage extends StatelessWidget {
   const ViewPlaceImage({
@@ -54,6 +55,14 @@ class ViewPlaceDetails extends StatelessWidget {
         super(key: key);
 
   final PlaceData _placeData;
+  void launchMap(String address) async {
+    String query = Uri.encodeComponent(address);
+    String googleUrl = "https://www.google.com/maps/search/?api=1&query=$query";
+
+    if (await canLaunch(googleUrl)) {
+      await launch(googleUrl);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +91,16 @@ class ViewPlaceDetails extends StatelessWidget {
           SizedBox(
             height: 10.0,
           ),
-          DetailsTextWidget(data: _placeData.address, icon: Icons.location_on),
+          FlatButton(
+            padding: EdgeInsets.zero,
+            child: DetailsTextWidget(
+                data: _placeData.address, icon: Icons.location_on),
+            onPressed: () {
+              // MapsLauncher.launchQuery(_placeData.address);
+              print(_placeData.address);
+              launchMap(_placeData.address);
+            },
+          ),
           SizedBox(
             height: 10.0,
           ),

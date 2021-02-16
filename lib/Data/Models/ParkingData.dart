@@ -3,6 +3,7 @@ import 'package:dataclass/dataclass.dart';
 @dataClass
 class ParkingData {
   var id;
+  var placeId;
   var imageUrl;
   var address;
   var rate;
@@ -19,6 +20,7 @@ class ParkingData {
 
   ParkingData({
     this.id,
+    this.placeId,
     this.imageUrl,
     this.address,
     this.rate,
@@ -36,6 +38,7 @@ class ParkingData {
 
   Map<String, dynamic> toJSON() => {
         'id': id,
+        'placeId': placeId,
         'imageUrl': imageUrl,
         'address': address,
         'rate': rate,
@@ -53,6 +56,7 @@ class ParkingData {
 
   void fromJSON(Map data) {
     id = data['id'];
+    placeId = data['placeId'];
     address = data['address'];
     imageUrl = data['imageUrl'];
     rate = data['rate'];

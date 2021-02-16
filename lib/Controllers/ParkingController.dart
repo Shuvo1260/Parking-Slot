@@ -28,6 +28,7 @@ class ParkingController extends GetxController {
 
       ParkingData parkingData = ParkingData(
           id: id,
+          placeId: placeData.id,
           imageUrl: placeData.imageUrl,
           address: placeData.address,
           rate: placeData.rate,
