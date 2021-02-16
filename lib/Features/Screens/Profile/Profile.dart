@@ -21,12 +21,6 @@ class _ProfileState extends State<Profile> {
     super.initState();
 
     getValue();
-    // _fetchUserData();
-    // print("UserData: $_userData");
-  }
-
-  void _fetchUserData() async {
-    _userData = _userController.userData.value;
   }
 
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

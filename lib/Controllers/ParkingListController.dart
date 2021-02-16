@@ -21,15 +21,6 @@ class ParkingListController extends GetxController {
         .where('carOwner', isEqualTo: _firebaseAuth.currentUser.email.trim())
         .orderBy('id', descending: true)
         .get();
-    //     .snapshots(includeMetadataChanges: true)
-    //     .listen((event) {
-    //   event.docs.forEach((element) {
-    //     print("Parking: ${element.data()}");
-    //     var parking = ParkingData();
-    //     parking.fromJSON(element.data());
-    //     parkingList.add(parking);
-    //   });
-    // });
 
     parkingList.clear();
 

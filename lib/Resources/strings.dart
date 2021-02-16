@@ -1,5 +1,5 @@
-const APP_NAME = "Parking Slot Seller";
-const SPLASH_SCREEN_MESSAGE = "Rent your space for park";
+const APP_NAME = "Parking Slot";
+const SPLASH_SCREEN_MESSAGE = "Find your parking place";
 const LOGIN_SCREEN_TOP_TEXT = "Welcome";
 const REGISTRATION_SCREEN_TOP_TEXT = "Registration";
 const CREATE_A_NEW_ACCOUNT = "Create new account";

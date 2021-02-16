@@ -75,7 +75,7 @@ class _ViewBookingState extends State<ViewBooking> {
                         height: 10.0,
                       ),
                       Text(
-                        "Park ower phone: +88${_parkingData.parkOwnerNumber}",
+                        "Park owner phone: +88${_parkingData.parkOwnerNumber}",
                         style: TextStyle(
                           fontSize: 16.0,
                         ),
@@ -324,7 +324,7 @@ class _OptionState extends State<Option> {
         children: [
           Center(
             child: Text(
-              "Car has picked",
+              "Request cancelled",
               style: TextStyle(
                   color: Colors.red,
                   fontSize: 24.0,
